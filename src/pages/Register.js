@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import '../styles/Auth.css';
 
 const Register = () => {
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');  // 👈 Changed from 'name' to 'username'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -15,7 +15,18 @@ const Register = () => {
     e.preventDefault();
     setError('');
 
-    const result = await register(name, email, password);
+    // Client-side validation
+    if (username.length < 5) {
+      setError('Username must be at least 5 characters');
+      return;
+    }
+    
+    if (password.length < 8) {
+      setError('Password must be at least 8 characters');
+      return;
+    }
+
+    const result = await register(username, email, password);  // 👈 Changed from 'name' to 'username'
     if (result.success) {
       navigate('/dashboard');
     } else {
@@ -30,12 +41,14 @@ const Register = () => {
         {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Name</label>
+            <label>Username</label>  {/* 👈 Changed label from 'Name' to 'Username' */}
             <input
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={username}  // 👈 Changed from 'name' to 'username'
+              onChange={(e) => setUsername(e.target.value)}  // 👈 Changed from setName to setUsername
               required
+              minLength={5}  // 👈 Added validation
+              placeholder="Minimum 5 characters"  // 👈 Added hint
             />
           </div>
           <div className="form-group">
@@ -54,6 +67,8 @@ const Register = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              minLength={8}  // 👈 Added validation
+              placeholder="Minimum 8 characters"  // 👈 Added hint
             />
           </div>
           <button type="submit" className="btn-primary">Register</button>

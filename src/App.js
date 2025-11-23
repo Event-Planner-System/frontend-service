@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
+import { EventProvider } from './context/EventContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import CreateEvent from './pages/CreateEvent';
+import MyEvents from './pages/MyEvents';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -54,6 +57,22 @@ function AppRoutes() {
           </ProtectedRoute>
         } 
       />
+      <Route 
+        path="/create-event" 
+        element={
+          <ProtectedRoute>
+            <CreateEvent />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/my-events" 
+        element={
+          <ProtectedRoute>
+            <MyEvents />
+          </ProtectedRoute>
+        } 
+      />
       <Route path="/" element={<Navigate to="/dashboard" />} />
     </Routes>
   );
@@ -63,9 +82,11 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="App">
-          <AppRoutes />
-        </div>
+        <EventProvider>
+          <div className="App">
+            <AppRoutes />
+          </div>
+        </EventProvider>
       </AuthProvider>
     </Router>
   );

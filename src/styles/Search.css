@@ -1,8 +1,10 @@
 .search-section {
   background-color: #ffffff;
   border: 2px medium #7c7777;
-  border-radius: 8px;
-  padding: 10px 15px 15px 15px;  
+  border-radius: 20px;
+  padding: 10px 15px 15px 15px; 
+  margin-top: 30px;  
+  
 }
 
 .search-header {
@@ -12,9 +14,11 @@
 
 .search-header h3 {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   color: #000000;
   text-align: left;
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 .advanced-search {
@@ -22,6 +26,8 @@
   flex-direction: column;
   gap: 15px;
   align-items: stretch;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .search-field {

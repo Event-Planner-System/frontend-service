@@ -4,7 +4,7 @@ export default function Search() {
     return (
         <div className="search-section">
             <div className="search-header">
-                 <h3>Search Events</h3> 
+                 <h3>Advanced Search on Events</h3> 
             </div>
 
             <div className="advanced-search">

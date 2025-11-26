@@ -11,8 +11,10 @@ export default function Dashboard() {
           <Nabvar />
             <div className="dashboard-header">
                 <div className="text-header">
+               
                     <p className="welcome">Welcome to your Dashboard</p>
                     <p className="info">Manage and explore your events</p>
+                   
                 </div>
                 <button className="create-event-btn" onClick={() => navigate('/create-event')}>+ Create Event</button>
             </div>

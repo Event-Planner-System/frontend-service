@@ -8,11 +8,11 @@
 
 .title {
   margin: 0;
-  color: #000000;
+  color: #6b38ff;
 }
 
 .title:hover {
-  color: #6b38ff; 
+ color: #5028cc;
   cursor: pointer;
 }
 
@@ -27,7 +27,7 @@
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #ffffff; 
+  background-color: rgb(251, 248, 253); 
   color: rgb(0, 0, 0);
   font-weight: bold;
   font-size: 16px;

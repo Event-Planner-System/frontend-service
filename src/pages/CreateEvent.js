@@ -127,17 +127,6 @@ const CreateEvent = () => {
               />
             </div>
 
-            <div className="form-group">
-              <label>Invite Attendees (Emails)</label>
-              <input
-                type="text"
-                value={invitedEmails}
-                onChange={(e) => setInvitedEmails(e.target.value)}
-                placeholder="jane@example.com, bob@example.com"
-              />
-              <small>Separate multiple emails with commas</small>
-            </div>
-
             <div className="form-actions">
               <button 
                 type="button" 

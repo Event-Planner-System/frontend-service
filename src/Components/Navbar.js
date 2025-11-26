@@ -13,10 +13,10 @@ export default function Navbar() {
   };
     return (
         <div id="navbar">
-            <h2 className="title">Event Planner</h2>
+            <h2 className="title" onClick={() => navigate('/dashboard')}>Event Planner</h2>
 
             <div id="center-buttons">
-            <button className="nav-btn">Dashboard</button>
+            <button className="nav-btn" onClick={() => navigate('/dashboard')}>Dashboard</button>
             <button className="nav-btn">My Events</button>
             <button className="nav-btn">Invited</button>
             </div>

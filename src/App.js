@@ -52,17 +52,17 @@ function AppRoutes() {
       <Route 
         path="/dashboard" 
         element={
-          <ProtectedRoute>
+          <PublicRoute>
             <Dashboard />
-          </ProtectedRoute>
+          </PublicRoute>
         } 
       />
       <Route 
         path="/create-event" 
         element={
-          <ProtectedRoute>
+          <PublicRoute>
             <CreateEvent />
-          </ProtectedRoute>
+          </PublicRoute>
         } 
       />
       <Route 
@@ -84,6 +84,7 @@ function App() {
       <AuthProvider>
         <EventProvider>
           <div className="App">
+
             <AppRoutes />
           </div>
         </EventProvider>

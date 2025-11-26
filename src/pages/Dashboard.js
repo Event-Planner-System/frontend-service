@@ -1,41 +1,23 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import '../styles/Dashboard.css';
+import Search from '../Components/Search/Search.js';
+import Card from '../Components/Card/Card.js';
+import Nabvar from '../Components/Navbar/Navbar.js';
+import { useNavigate } from 'react-router-dom';
 
-const Dashboard = () => {
-  const { user } = useContext(AuthContext);
+export default function Dashboard() {
   const navigate = useNavigate();
-
-  return (
-    <div>
-      <Navbar />
-      <div className="dashboard-container">
-        <div className="dashboard-card">
-          <h1>Welcome to Your Dashboard! 👋</h1>
-
-          <div className="user-info">
-            <p><strong>Email:</strong> {user?.email}</p>
-          </div>
-
-          <div className="dashboard-actions">
-            <div className="action-card" onClick={() => navigate('/create-event')}>
-              <div className="action-icon">➕</div>
-              <h3>Create Event</h3>
-              <p>Organize a new event and invite attendees</p>
+    return (
+        <div id="dashboard">
+          <Nabvar />
+            <div className="dashboard-header">
+                <div className="text-header">
+                    <p className="welcome">Welcome to your Dashboard</p>
+                    <p className="info">Manage and explore your events</p>
+                </div>
+                <button className="create-event-btn" onClick={() => navigate('/create-event')}>+ Create Event</button>
             </div>
-
-            <div className="action-card" onClick={() => navigate('/my-events')}>
-              <div className="action-icon">📅</div>
-              <h3>My Events</h3>
-              <p>View and manage all your events</p>
-            </div>
-          </div>
+            <Search />
+            <Card />
         </div>
-      </div>
-    </div>
-  );
-};
-
-export default Dashboard;
+    );
+}

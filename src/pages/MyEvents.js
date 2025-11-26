@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { EventContext } from '../context/EventContext';
-import Navbar from '../components/Navbar';
+import Navbar from '../Components/Navbar';
 import axios from 'axios';
 import '../styles/MyEvents.css';
 

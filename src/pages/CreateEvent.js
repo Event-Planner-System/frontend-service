@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { EventContext } from '../context/EventContext';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../Components/Navbar/Navbar.js';
+import Navbar from '../Components/Navbar.js';
 import '../styles/CreateEvent.css';
 
 const CreateEvent = () => {

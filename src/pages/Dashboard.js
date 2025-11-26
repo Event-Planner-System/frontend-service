@@ -1,7 +1,7 @@
 import '../styles/Dashboard.css';
-import Search from '../Components/Search/Search.js';
-import Card from '../Components/Card/Card.js';
-import Nabvar from '../Components/Navbar/Navbar.js';
+import Search from '../Components/Search.js';
+import Card from '../Components/Card.js';
+import Nabvar from '../Components/Navbar.js';
 import { useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {

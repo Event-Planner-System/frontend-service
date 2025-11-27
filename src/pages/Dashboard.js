@@ -19,6 +19,18 @@ export default function Dashboard() {
                 <button className="create-event-btn" onClick={() => navigate('/create-event')}>+ Create Event</button>
             </div>
             <Search />
+            <div className="events-section">
+                <h2 className="section-title">Your Events</h2>
+                <div className="cards-container">
+                    {/* Render multiple Card components here */}
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                </div>
+            </div>
             <Card />
         </div>
     );

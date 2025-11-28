@@ -90,7 +90,7 @@ export default function EventDetails() {
 
             <div className="layout-grid">
                 {/* Event Card */}
-                <div className="card2 event-card">
+                <div className="card2 event-card2">
                     <div className="nameAnddeleteBtn">
                         <h1 className="name">{event.title}</h1>
                         <button className="btn-delete" onClick={() => handleDelete(event.id, event.title)}>

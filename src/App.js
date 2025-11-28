@@ -11,6 +11,9 @@ import CreateEvent from './pages/CreateEvent';
 import MyEvents from './pages/MyEvents';
 import InvitedEventsDetails from './pages/InvitedEventsDetails';
 import MyEventsDetails from './pages/MyEventsDetails';
+import Invited from './pages/Invited';   // 
+
+
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -77,7 +80,8 @@ function AppRoutes() {
           </ProtectedRoute>
         } 
       />
-      <Route 
+     
+       <Route 
         path="/invited-events-details/:id" 
         element={
           <ProtectedRoute>
@@ -93,7 +97,15 @@ function AppRoutes() {
           </ProtectedRoute>
         } 
       />
-      <Route path="/" element={<Navigate to="/dashboard" />} />
+      <Route 
+  path="/invited" 
+  element={
+    <ProtectedRoute>
+      <Invited />
+    </ProtectedRoute>
+  } 
+/>
+
     </Routes>
   );
 }

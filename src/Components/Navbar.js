@@ -17,8 +17,9 @@ export default function Navbar() {
 
             <div id="center-buttons">
             <button className="nav-btn" onClick={() => navigate('/dashboard')}>Dashboard</button>
-            <button className="nav-btn">My Events</button>
-            <button className="nav-btn">Invited</button>
+ <button className="nav-btn" onClick={() => navigate('/my-events')}> My Events </button>
+            <button className="nav-btn" onClick={() => navigate('/invited')}>Invited</button>
+
             </div>
 
             <button className="logout" onClick={handleLogout}>Logout</button>

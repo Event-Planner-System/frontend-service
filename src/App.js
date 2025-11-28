@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { EventProvider } from './context/EventContext';
 import { InvitationsProvider } from './context/InvitationsContext';
-import { SearchProvider } from './context/SearchContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -12,9 +11,8 @@ import CreateEvent from './pages/CreateEvent';
 import MyEvents from './pages/MyEvents';
 import InvitedEventsDetails from './pages/InvitedEventsDetails';
 import MyEventsDetails from './pages/MyEventsDetails';
-import Invited from './pages/Invited';   // 
-
-
+import { SearchProvider } from './context/SearchContext';
+import Invited from './pages/Invited';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -81,8 +79,7 @@ function AppRoutes() {
           </ProtectedRoute>
         } 
       />
-     
-       <Route 
+      <Route 
         path="/invited-events-details/:id" 
         element={
           <ProtectedRoute>
@@ -99,14 +96,15 @@ function AppRoutes() {
         } 
       />
       <Route 
-  path="/invited" 
-  element={
-    <ProtectedRoute>
-      <Invited />
-    </ProtectedRoute>
-  } 
-/>
+        path="/invited" 
+        element={
+          <ProtectedRoute>
+            <Invited />
+          </ProtectedRoute>
+        } 
+      />
 
+      <Route path="/" element={<Navigate to="/dashboard" />} />
     </Routes>
   );
 }
@@ -116,14 +114,14 @@ function App() {
     <Router>
       <AuthProvider>
         <EventProvider>
-          <SearchProvider>
           <InvitationsProvider>
-          
+            <SearchProvider>
           <div className="App">
+
             <AppRoutes />
           </div>
-          </InvitationsProvider>
           </SearchProvider>
+          </InvitationsProvider>
         </EventProvider>
       </AuthProvider>
     </Router>

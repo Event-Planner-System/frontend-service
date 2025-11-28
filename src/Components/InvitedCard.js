@@ -1,8 +1,27 @@
 import "../styles/Invited.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function InvitedCard({ event, role, status, onCardClick }) {
+  const navigate = useNavigate();
   const isOrganizerPending =
     role === "organizer" && status === "Pending";
+
+  const handleAcceptInvitation = async (accept) => {
+    try {
+      const token = localStorage.getItem("access_token");
+      const res = await axios.post(
+        `http://localhost:8000/invitations/${event.id}/accept-invitation-organizer/${event.currentUserId}?accept=${accept}`,
+        {},
+        {
+          headers: {  Authorization: `Bearer ${token}` },
+        }
+      );
+      navigate("/my-events");
+    } catch (error) {
+      console.error("Error accepting invitation:", error);
+    }
+  };
 
 
   return (
@@ -38,8 +57,8 @@ export default function InvitedCard({ event, role, status, onCardClick }) {
 
         {isOrganizerPending && (
           <div className="card-actions-inline">
-            <button className="accept-btn" >Accept</button>
-            <button className="decline-btn">Decline</button>
+            <button className="accept-btn" onClick={() => handleAcceptInvitation("true")}>Accept</button>
+            <button className="decline-btn" onClick={() => handleAcceptInvitation("false")}>Decline</button>
           </div>
         )}
       </div>

@@ -47,9 +47,6 @@ export const InvitationsProvider = ({ children }) => {
     return backendUser;  // <-- IMPORTANT: return backend user, not savedUser
   };
 
-
-
-
   // ----------------------
   // Send invitations
   // ----------------------

@@ -1,17 +1,24 @@
 export default function Card({ event, onCardClick }) {
   const attendeeCount = event.participants?.length || 0;
 
-  const organizer = event.participants.find(p => p.role === "organizer" || p.role === "attendee");
+  
+  const currentUserId = event.currentUserId;
+
+
+  // نعرف اليوزر الحقيقي في الإيفنت
+  const me = event.participants.find(p => p.user_id === currentUserId);
+
+  const userRole = me?.role === "organizer" ? "Organizer" : "Attendee";
+
+  // Organizer الحقيقي (لإظهار اسمه)
+  const organizer = event.participants.find(p => p.role === "organizer");
 
   return (
     <div className="card" onClick={onCardClick} style={{ cursor: "pointer" }}>
       
       <div className="card-header">
         <h4 className="card-title">{event.title}</h4>
-
-        <span className="card-role">
-          {organizer ? "Organizer" : "Attendee"}
-        </span>
+        <span className="card-role">{userRole}</span>
       </div>
 
       <p className="task-description">{event.description || "No description"}</p>

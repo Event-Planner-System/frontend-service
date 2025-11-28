@@ -8,6 +8,9 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CreateEvent from './pages/CreateEvent';
 import MyEvents from './pages/MyEvents';
+import Invited from './pages/Invited';   // 
+
+
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -50,22 +53,17 @@ function AppRoutes() {
           </PublicRoute>
         } 
       />
+    <Route path="/dashboard" element={<Dashboard />} />
+
       <Route 
-        path="/dashboard" 
-        element={
-          <PublicRoute>
-            <Dashboard />
-          </PublicRoute>
-        } 
-      />
-      <Route 
-        path="/create-event" 
-        element={
-          <PublicRoute>
-            <CreateEvent />
-          </PublicRoute>
-        } 
-      />
+  path="/create-event" 
+    element={
+    <ProtectedRoute>
+      <CreateEvent />
+    </ProtectedRoute>
+           }
+    />
+
       <Route 
         path="/my-events" 
         element={
@@ -74,7 +72,16 @@ function AppRoutes() {
           </ProtectedRoute>
         } 
       />
-      <Route path="/" element={<Navigate to="/dashboard" />} />
+     
+       <Route 
+  path="/invited" 
+  element={
+    <ProtectedRoute>
+      <Invited />
+    </ProtectedRoute>
+  } 
+/>
+
     </Routes>
   );
 }

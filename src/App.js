@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { EventProvider } from './context/EventContext';
 import { InvitationsProvider } from './context/InvitationsContext';
+import { SearchProvider } from './context/SearchContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -115,12 +116,14 @@ function App() {
     <Router>
       <AuthProvider>
         <EventProvider>
+          <SearchProvider>
           <InvitationsProvider>
+          
           <div className="App">
-
             <AppRoutes />
           </div>
           </InvitationsProvider>
+          </SearchProvider>
         </EventProvider>
       </AuthProvider>
     </Router>

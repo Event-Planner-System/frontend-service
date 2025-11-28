@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { EventProvider } from './context/EventContext';
+import { SearchProvider } from './context/SearchContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
@@ -84,10 +85,12 @@ function App() {
     <Router>
       <AuthProvider>
         <EventProvider>
+        <SearchProvider>
           <div className="App">
 
             <AppRoutes />
           </div>
+          </SearchProvider>
         </EventProvider>
       </AuthProvider>
     </Router>

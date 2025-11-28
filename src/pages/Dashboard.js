@@ -1,32 +1,37 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
 import '../styles/Dashboard.css';
+import Search from '../Components/Search.js';
+import Card from '../Components/Card.js';
+import Nabvar from '../Components/Navbar.js';
+import { useNavigate } from 'react-router-dom';
 
-const Dashboard = () => {
-  const { user, logout } = useContext(AuthContext);
+export default function Dashboard() {
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
-
-  return (
-    <div className="dashboard-container">
-      <div className="dashboard-card">
-        <h1>Welcome to Dashboard!</h1>
-        <div className="user-info">
-          <p><strong>Name:</strong> {user?.name}</p>
-          <p><strong>Email:</strong> {user?.email}</p>
-          <p><strong>User ID:</strong> {user?.id}</p>
+    return (
+        <div id="dashboard">
+          <Nabvar />
+            <div className="dashboard-header">
+                <div className="text-header">
+               
+                    <p className="welcome">Welcome to your Dashboard</p>
+                    <p className="info">Manage and explore your events</p>
+                   
+                </div>
+                <button className="create-event-btn" onClick={() => navigate('/create-event')}>+ Create Event</button>
+            </div>
+            <Search />
+            <div className="events-section">
+                <h2 className="section-title">Your Events</h2>
+                <div className="cards-container">
+                    {/* Render multiple Card components here */}
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                </div>
+            </div>
+            <Card />
         </div>
-        <button onClick={handleLogout} className="btn-logout">
-          Logout
-        </button>
-      </div>
-    </div>
-  );
-};
-
-export default Dashboard;
+    );
+}

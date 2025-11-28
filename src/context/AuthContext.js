@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('access_token');
     const savedUser = localStorage.getItem('user');
     
-    if (token && savedUser) {
+    if (token && savedUser && savedUser !== 'undefined' && savedUser !== 'null') {
       try {
         setUser(JSON.parse(savedUser));
       } catch (error) {
@@ -29,48 +29,83 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (username, email, password) => {
     try {
-      const res = await axios.post(`${API_URL}/register`, {  // Fixed: parentheses instead of backticks
+      const res = await axios.post(`${API_URL}/register`, {
         username,
         email,
         password
       });
       
       // Backend returns { message: "User registered successfully" }
-      // After registration, automatically log in
-      return await login(email, password);
+      console.log('✅ Registration successful:', res.data.message);
+      
+      return { success: true };
     } catch (error) {
       console.error('Registration error:', error.response?.data);
+      
+      let errorMessage = 'Registration failed';
+      if (error.response?.data?.detail) {
+        if (typeof error.response.data.detail === 'string') {
+          errorMessage = error.response.data.detail;
+        } else if (Array.isArray(error.response.data.detail)) {
+          errorMessage = error.response.data.detail
+            .map(err => {
+              const field = err.loc[err.loc.length - 1];
+              return `${field}: ${err.msg}`;
+            })
+            .join(', ');
+        }
+      }
+      
       return { 
         success: false, 
-        message: error.response?.data?.detail || 'Registration failed' 
+        message: errorMessage
       };
     }
   };
 
   const login = async (email, password) => {
     try {
-      const res = await axios.post(`${API_URL}/login`, {  // Fixed: parentheses instead of backticks
+      const res = await axios.post(`${API_URL}/login`, {
+        username: email,  // 👈 Backend expects User object with username field
         email,
         password
       });
       
-      // Backend returns { access_token, token_type }
-      const token = res.data.access_token;
+      console.log('✅ Login response:', res.data);
       
-      // Store token
+      // Backend returns { access_token, token_type }
+      // We need to create a user object manually
+      const token = res.data.access_token;
       localStorage.setItem('access_token', token);
       
-      // Create user object from token data (you can decode JWT if needed)
+      // Create user object from email
       const userObj = { email };
       localStorage.setItem('user', JSON.stringify(userObj));
       setUser(userObj);
       
+      console.log('✅ User logged in:', userObj);
+      
       return { success: true };
     } catch (error) {
       console.error('Login error:', error.response?.data);
+      
+      let errorMessage = 'Login failed';
+      if (error.response?.data?.detail) {
+        if (typeof error.response.data.detail === 'string') {
+          errorMessage = error.response.data.detail;
+        } else if (Array.isArray(error.response.data.detail)) {
+          errorMessage = error.response.data.detail
+            .map(err => {
+              const field = err.loc[err.loc.length - 1];
+              return `${field}: ${err.msg}`;
+            })
+            .join(', ');
+        }
+      }
+      
       return { 
         success: false, 
-        message: error.response?.data?.detail || 'Login failed' 
+        message: errorMessage
       };
     }
   };

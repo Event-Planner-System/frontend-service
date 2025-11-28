@@ -58,7 +58,7 @@
 
 .search-field input:focus,
 .search-field select:focus {
-  border-bottom-color: #6b38ff;
+  border-bottom-color: #6c41b2;
 }
 
 .search-field input::placeholder {
@@ -88,7 +88,7 @@
   padding: 8px 30px;
   border: none;
   border-radius: 6px;
-  background-color: #6b38ff;
+  background-color: #6c41b2;
   color: #ffffff;
   cursor: pointer;
   font-size: 14px;
@@ -96,5 +96,5 @@
 }
 
 .search-btn:hover {
-  background-color: #5028cc;
+  background-color: #6c41b2cc;
 }

@@ -61,7 +61,7 @@ const CreateEvent = () => {
   };
 
   return (
-    <div>
+    <div id="create-event-page">
       <Navbar />
       <div className="create-event-container">
         <div className="create-event-card">

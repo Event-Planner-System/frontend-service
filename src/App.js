@@ -3,11 +3,14 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { EventProvider } from './context/EventContext';
+import { InvitationsProvider } from './context/InvitationsContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CreateEvent from './pages/CreateEvent';
 import MyEvents from './pages/MyEvents';
+import InvitedEventsDetails from './pages/InvitedEventsDetails';
+import MyEventsDetails from './pages/MyEventsDetails';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -53,17 +56,17 @@ function AppRoutes() {
       <Route 
         path="/dashboard" 
         element={
-          <PublicRoute>
+          <ProtectedRoute>
             <Dashboard />
-          </PublicRoute>
+          </ProtectedRoute>
         } 
       />
       <Route 
         path="/create-event" 
         element={
-          <PublicRoute>
+          <ProtectedRoute>
             <CreateEvent />
-          </PublicRoute>
+          </ProtectedRoute>
         } 
       />
       <Route 
@@ -71,6 +74,22 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <MyEvents />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/invited-events-details/:id" 
+        element={
+          <ProtectedRoute>
+            <InvitedEventsDetails />
+          </ProtectedRoute>
+        } 
+      />
+      <Route 
+        path="/my-events-details/:id" 
+        element={
+          <ProtectedRoute>
+            <MyEventsDetails />
           </ProtectedRoute>
         } 
       />
@@ -84,10 +103,12 @@ function App() {
     <Router>
       <AuthProvider>
         <EventProvider>
+          <InvitationsProvider>
           <div className="App">
 
             <AppRoutes />
           </div>
+          </InvitationsProvider>
         </EventProvider>
       </AuthProvider>
     </Router>

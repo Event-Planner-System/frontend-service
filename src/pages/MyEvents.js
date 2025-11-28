@@ -3,8 +3,10 @@ import { EventContext } from '../context/EventContext';
 import Navbar from '../Components/Navbar.js';
 import axios from 'axios';
 import '../styles/MyEvents.css';
+import { useNavigate } from 'react-router-dom';
 
 const MyEvents = () => {
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -17,7 +19,7 @@ const MyEvents = () => {
   const fetchMyEvents = async () => {
     try {
       const token = localStorage.getItem('access_token');
-      const res = await axios.get('http://localhost:8000/events/my-events', {
+      const res = await axios.get('http://localhost:8000/events/all_event', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -77,7 +79,7 @@ const MyEvents = () => {
         ) : (
           <div className="events-grid">
             {events.map((event) => (
-              <div key={event.id} className="event-card">
+              <div key={event.id} className="event-card" onClick={() => navigate(`/my-events-details/${event.id}`)}>
                 <div className="event-header">
                   <h3>{event.title}</h3>
                   <span className="event-badge">Organizer</span>
@@ -114,7 +116,7 @@ const MyEvents = () => {
                     className="btn-delete"
                     onClick={() => handleDelete(event.id, event.title)}
                   >
-                    🗑️ Delete Event
+                    Delete Event
                   </button>
                 </div>
               </div>

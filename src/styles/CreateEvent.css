@@ -1,17 +1,26 @@
+#create-event-page {
+  display: flex;
+  flex-direction: column;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
 .create-event-container {
   min-height: calc(100vh - 80px);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .create-event-card {
   background: white;
   padding: 3rem;
   border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 100px rgba(0, 0, 0, 0.2);
   max-width: 600px;
   width: 100%;
 }
@@ -42,13 +51,13 @@
   border-radius: 8px;
   font-size: 1rem;
   transition: all 0.3s;
+  resize: none; 
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #6c41b2cc;
 }
 
 .form-group small {
@@ -82,7 +91,7 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #6c41b2;
   color: white;
 }
 

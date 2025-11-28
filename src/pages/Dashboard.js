@@ -20,7 +20,7 @@ export default function Dashboard() {
             </div>
             <Search />
             <div className="events-section">
-                <h2 className="section-title">Your Events</h2>
+                <h2 className="section-title">All Events</h2>
                 <div className="cards-container">
                     {/* Render multiple Card components here */}
                     <Card />

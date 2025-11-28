@@ -35,14 +35,14 @@
   color: #686363;
   font-weight: medium;
   padding-right:50px;
-  margin: 0;
+  margin-left: 35px;
 }
 .create-event-btn {
   padding: 8px 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  background-color: #6b38ff; 
+  background-color: #6c41b2; 
   color: rgb(255, 255, 255);
   font-weight: bold;
   font-size: medium;
@@ -50,7 +50,7 @@
 }
 
 .create-event-btn:hover {
-  background-color: #5028cc;
+  background-color: #6c41b2cc;
 }
 
 .cards-container {

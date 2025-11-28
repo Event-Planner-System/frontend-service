@@ -143,23 +143,6 @@
   margin-top: 1.5rem;
 }
 
-.btn-delete {
-  flex: 1;
-  background: #ff4757;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.btn-delete:hover {
-  background: #ee5a6f;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
-}
 
 .error-message {
   background: white;

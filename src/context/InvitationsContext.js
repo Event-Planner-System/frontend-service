@@ -111,6 +111,36 @@ export const InvitationsProvider = ({ children }) => {
       };
     }
   };
+  // ----------------------
+  // Accept Invitation Organizer
+  // ----------------------
+  const acceptInvitationOrganizer = async (eventId, status) => {
+    try{
+      const token = localStorage.getItem("access_token");
+      const attendee = await getUser();
+
+      const res = await axios.post(
+        `${API_URL}/${eventId}/accept-invitation-organizer/${attendee._id}?accept=${status}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        }
+      );
+      return { success: true, message: res.data.message };
+    }
+    catch (error){
+      console.error("FULL ERROR:", error);
+      console.error("ERROR RESPONSE:", error.response);
+      console.error("ERROR DATA:", error.response?.data);
+      return {
+        success: false,
+        message: error.response?.data?.detail || "Accepting invitation failed"
+      };
+    }
+  };
+
 
 
   // ----------------------
@@ -146,6 +176,7 @@ export const InvitationsProvider = ({ children }) => {
         loading,
         inviteAttendees,
         acceptInvitationAttendee,
+        acceptInvitationOrganizer,
         logout,
         checkBackendConnection,
       }}

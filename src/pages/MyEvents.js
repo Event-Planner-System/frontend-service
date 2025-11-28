@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { EventContext } from '../context/EventContext';
 import Navbar from '../Components/Navbar.js';
 import Search from '../Components/Search.js';
-import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Card from '../Components/Card.js';
 import '../styles/MyEvents.css';

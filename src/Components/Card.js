@@ -1,7 +1,7 @@
 export default function Card({ event, onCardClick }) {
   const attendeeCount = event.participants?.length || 0;
 
-  const organizer = event.participants.find(p => p.role === "organizer");
+  const organizer = event.participants.find(p => p.role === "organizer" || p.role === "attendee");
 
   return (
     <div className="card" onClick={onCardClick} style={{ cursor: "pointer" }}>

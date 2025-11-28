@@ -4,6 +4,7 @@ export default function InvitedCard({ event, role, status, onCardClick }) {
   const isOrganizerPending =
     role === "organizer" && status === "Pending";
 
+
   return (
     <div className="invited-card">
       <div className="card-wrapper">
@@ -37,7 +38,7 @@ export default function InvitedCard({ event, role, status, onCardClick }) {
 
         {isOrganizerPending && (
           <div className="card-actions-inline">
-            <button className="accept-btn">Accept</button>
+            <button className="accept-btn" >Accept</button>
             <button className="decline-btn">Decline</button>
           </div>
         )}

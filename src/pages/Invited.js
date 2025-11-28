@@ -91,7 +91,7 @@ export default function Invited() {
                   event={event}
                   role={role}
                   status={status}
-                  onCardClick={() => navigate(`/my-events-details/${event.id}`)}
+                  onCardClick={() => navigate(`/invited-events-details/${event.id}`)}
                 />
               );
             })}

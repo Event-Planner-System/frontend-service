@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { EventContext } from '../context/EventContext';
-import Navbar from '../Components/Navbar.js';
-import Search from '../Components/Search.js';
-import axios from 'axios';
+import DashboardLayout from '../Components/DashboardLayout.js';
 import Card from '../Components/Card.js';
 import '../styles/MyEvents.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const MyEvents = () => {
   const [events, setEvents] = useState([]);
@@ -34,70 +33,47 @@ const MyEvents = () => {
     }
   };
 
-  const handleDelete = async (eventId, eventTitle) => {
-    if (window.confirm(`Are you sure you want to delete "${eventTitle}"?`)) {
-      const result = await deleteEvent(eventId);
-      if (result.success) {
-        setEvents(events.filter(event => event.id !== eventId));
-        alert('Event deleted successfully! 🗑️');
-      } else {
-        alert(`Delete failed: ${result.message}`);
-      }
-    }
-  };
-
   if (loading) {
     return (
-      <div>
-        <Navbar />
-        <div className="my-events-container">
-          <div className="loading-spinner">Loading events...</div>
-        </div>
-      </div>
+      <DashboardLayout
+        welcome="My Events"
+        info="Events you have organized"
+        showSearch={false}
+      >
+        <div className="loading-spinner">Loading events...</div>
+      </DashboardLayout>
     );
   }
 
   return (
-    <div>
-      <Navbar />
-      <div className="my-events-container">
+    <DashboardLayout
+      welcome="My Events"
+      info="Events you have organized"
+    >
+      {error && <div className="error-message">{error}</div>}
 
-        {/* HEADER */}
-        <div className="dashboard-header">
-          <div className="text-header">
-            <p className="welcome">My Events</p>
-            <p className="info">Events you have organized</p>
+      <div className="events-section">
+        <h2 className="section-title">Your Organized Events</h2>
+        
+        {events.length === 0 ? (
+          <div className="no-events">
+            <div className="no-events-icon">📅</div>
+            <h3>No events yet</h3>
+            <p>Start by creating your first event</p>
           </div>
-
-          <button
-            className="create-event-btn"
-            onClick={() => navigate('/create-event')}
-          >
-            + Create Event
-          </button>
-        </div>
-
-        {/* SEARCH */}
-        <div className="search-container">
-          <Search />
-        </div>
-
-        {error && <div className="error-message">{error}</div>}
-
-        <div className="events-grid">
-          {events.map((event) => (
-            <Card
-              key={event.id}
-              event={event}
-              showDelete={true}
-              onDelete={handleDelete}
-              onCardClick={() => navigate(`/my-events-details/${event.id}`)}
-            />
-          ))}
-        </div>
-
+        ) : (
+          <div className="cards-container">
+            {events.map((event) => (
+              <Card
+                key={event.id}
+                event={event}
+                onCardClick={() => navigate(`/my-events-details/${event.id}`)}
+              />
+            ))}
+          </div>
+        )}
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

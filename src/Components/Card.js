@@ -5,12 +5,10 @@ export default function Card({ event, onCardClick }) {
   const currentUserId = event.currentUserId;
 
 
-  // نعرف اليوزر الحقيقي في الإيفنت
   const me = event.participants.find(p => p.user_id === currentUserId);
 
   const userRole = me?.role === "organizer" ? "Organizer" : "Attendee";
 
-  // Organizer الحقيقي (لإظهار اسمه)
   const organizer = event.participants.find(p => p.role === "organizer");
 
   return (
@@ -26,7 +24,7 @@ export default function Card({ event, onCardClick }) {
       <div className="card-info">
         <div className="info-item">
           <span className="icon">📅</span>
-          <span className="card-date">{event.date} — {event.time}</span>
+          <span className="card-date">{event.date} at {event.time}</span>
         </div>
 
         <div className="info-item">

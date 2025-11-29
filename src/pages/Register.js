@@ -71,7 +71,7 @@ const Register = () => {
               placeholder="Minimum 8 characters"  // 👈 Added hint
             />
           </div>
-          <button type="submit" className="btn-primary">Register</button>
+          <button type="submit" className="btn-primary2">Register</button>
         </form>
         <p className="auth-link">
           Already have an account? <Link to="/login">Login</Link>

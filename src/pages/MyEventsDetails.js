@@ -72,6 +72,7 @@ export default function EventDetails() {
         } else {
             alert(`Invitation failed: ${result.message}`);
         }
+        fetchMyEvent(); // Refresh event data to show new invitees
     }
     if (loading) {
         return (
@@ -83,124 +84,135 @@ export default function EventDetails() {
             </div>
         );
     }
+    // Add this check
+    if (!event || !event.participants) {
+        return (
+            <div>
+                <Navbar />
+                <div className="my-events-container">
+                    <div className="error-message">Event not found</div>
+                </div>
+            </div>
+        );
+    }
     return (
-        <div  id="my-events-details">
+        <div id="my-events-details">
             <Navbar />
-        <div className="event-container">
+            <div className="event-container">
 
-            <div className="layout-grid">
-                {/* Event Card */}
-                <div className="card2 event-card2">
-                    <div className="nameAnddeleteBtn">
-                        <h1 className="name">{event.title}</h1>
-                        <button className="btn-delete" onClick={() => handleDelete(event.id, event.title)}>
-                            Delete
-                        </button>
+                <div className="layout-grid">
+                    {/* Event Card */}
+                    <div className="card2 event-card2">
+                        <div className="nameAnddeleteBtn">
+                            <h1 className="name">{event.title}</h1>
+                            <button className="btn-delete" onClick={() => handleDelete(event.id, event.title)}>
+                                Delete
+                            </button>
+                        </div>
+                        <p className="subtitle">{event.description}</p>
+
+
+                        <div className="info-grid">
+                            <div className="info-item2">
+                                <p className="label">Date & Time</p>
+                                <p className="value">{event.date} at {event.time}</p>
+                            </div>
+                            <div className="info-item2">
+                                <p className="label">Location</p>
+                                <p className="value">{event.location}</p>
+                            </div>
+                            <div className="info-item2">
+                                <p className="label">Organizer</p>
+                                <p className="value">{event.participants[0]?.username || "Unknown"}</p>
+                            </div>
+                            <div className="info-item2">
+                                <p className="label">Attendees</p>
+                                <p className="value">{event.participants?.length || 0} people</p>
+                            </div>
+                        </div>
                     </div>
-                    <p className="subtitle">{event.description}</p>
 
 
-                    <div className="info-grid">
-                        <div className="info-item2">
-                            <p className="label">Date & Time</p>
-                            <p className="value">{event.date} at {event.time}</p>
+                    {/* Summary */}
+                    <div className="card2 summary-card">
+                        <h2 className="summary-title">Summary</h2>
+
+
+                        <div className="summary-box going">
+                            <span>Going</span>
+                            <span>{goingCount}</span>
                         </div>
-                        <div className="info-item2">
-                            <p className="label">Location</p>
-                            <p className="value">{event.location}</p>
+                        <div className="summary-box maybe">
+                            <span>Maybe</span>
+                            <span>{maybeCount}</span>
                         </div>
-                        <div className="info-item2">
-                            <p className="label">Organizer</p>
-                            <p className="value">{event.participants[0]?.username || "Unknown"}</p>
+                        <div className="summary-box not-going">
+                            <span>Not Going</span>
+                            <span>{notGoingCount}</span>
                         </div>
-                        <div className="info-item2">
-                            <p className="label">Attendees</p>
-                            <p className="value">{event.participants?.length || 0} people</p>
+                        <div className="summary-box pending">
+                            <span>Pending</span>
+                            <span>{pendingCount}</span>
                         </div>
                     </div>
                 </div>
 
 
-                {/* Summary */}
-                <div className="card2 summary-card">
-                    <h2 className="summary-title">Summary</h2>
+                <div className="layout-grid">
 
+                    <div className="card2 attendees-card">
+                        <h2>Attendees</h2>
+                        <div className="attendees-rows">
+                            {event.participants?.map((p) => (
+                                <div className="attendee-row" key={p.user_id}>
+                                    <span>{p.username}</span>
+                                    {p.attendance_status === "Going" ? (
+                                        <span className="status going-status">{p.attendance_status}</span>
+                                    ) : p.attendance_status === "Maybe" ? (
+                                        <span className="status maybe-status">{p.attendance_status}</span>
+                                    ) : p.attendance_status === "Not Going" ? (
+                                        <span className="status not-going-status">{p.attendance_status}</span>
+                                    ) : (
+                                        <span className="status pending-status">{p.attendance_status}</span>
+                                    )}
 
-                    <div className="summary-box going">
-                        <span>Going</span>
-                        <span>{goingCount}</span>
-                    </div>
-                    <div className="summary-box maybe">
-                        <span>Maybe</span>
-                        <span>{maybeCount}</span>
-                    </div>
-                    <div className="summary-box not-going">
-                        <span>Not Going</span>
-                        <span>{notGoingCount}</span>
-                    </div>
-                    <div className="summary-box pending">
-                        <span>Pending</span>
-                        <span>{pendingCount}</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <div className="layout-grid">
-
-                <div className="card2 attendees-card">
-                    <h2>Attendees</h2>
-                    <div className="attendees-rows">
-                    {event.participants?.map((p) => (
-                        <div className="attendee-row" key={p.user_id}>
-                            <span>{p.username}</span>
-                            {p.attendance_status === "Going" ? (
-                                <span className="status going-status">{p.attendance_status}</span>
-                            ) : p.attendance_status === "Maybe" ? (
-                                <span className="status maybe-status">{p.attendance_status}</span>
-                            ) : p.attendance_status === "Not Going" ?(
-                                <span className="status not-going-status">{p.attendance_status}</span>
-                            ):(
-                                <span className="status pending-status">{p.attendance_status}</span>
-                            )}
-
+                                </div>
+                            ))}
                         </div>
-                    ))}
                     </div>
-                </div>
-                <div className="card2 invite-card">
-                    <h3>Invite Attendees</h3>
-                    <input
-                        type="email"
-                        placeholder="attendee@example.com"
-                        className="email-input"
-                    />
-                    <div className="role-buttons">
-                        <button
-                            className={role === "attendee" ? "active" : ""}
-                            onClick={() => {
-                                setRole("attendee")
-                            }}
-                        >
-                            Attendee
-                        </button>
-                        <button
-                            className={role === "organizer" ? "active" : ""}
-                            onClick={() => {
-                                setRole("organizer")
-                            }}
-                        >
-                            Organizer
-                        </button>
+                    <div className="card2 invite-card">
+                        <h3>Invite Attendees</h3>
+                        <input
+                            type="email"
+                            placeholder="attendee@example.com"
+                            className="email-input"
+                        />
+                        <div className="role-buttons">
+                            <button
+                                className={role === "attendee" ? "active" : ""}
+                                onClick={() => {
+                                    setRole("attendee")
+                                }}
+                            >
+                                Attendee
+                            </button>
+                            <button
+                                className={role === "organizer" ? "active" : ""}
+                                onClick={() => {
+                                    setRole("organizer")
+                                }}
+                            >
+                                Organizer
+                            </button>
+                        </div>
+                        <button className="send-btn" onClick={() => handleInviteAttendees()}>Send Invite</button>
                     </div>
-                    <button className="send-btn" onClick={() => handleInviteAttendees()}>Send Invite</button>
+
+
                 </div>
 
 
-            </div>
 
-
-
-        </div></div>
+            </div></div>
     );
 }

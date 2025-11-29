@@ -80,58 +80,7 @@
   margin: 0;
 }
 
-/* Summary Card */
-.summary-card {
-  padding: 30px;
-}
 
-.summary-title {
-  font-size: 20px;
-  font-weight: 700;
-  margin: 0 0 20px 0;
-  color: #000;
-}
-
-.summary-box2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 20px;
-  border-radius: 10px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  font-size: 15px;
-  width: 100%;
-}
-
-.summary-box:last-child {
-  margin-bottom: 0;
-}
-
-.summary-box2.going {
-  background: #ded7f7;
-  color: #8654d6;
-}
-
-.summary-box2.maybe {
-  background: #ede9fe;
-  color: #5b21b6;
-}
-
-.summary-box2.not-going {
-  background: #fee2e2;
-  color: #dc2626;
-}
-
-.summary-box2.pending {
-  background: #f3f4f6;
-  color: #374151;
-}
-
-.summary-box span:last-child {
-  font-size: 18px;
-  font-weight: 700;
-}
 
 .attendance-card {
   background: #ede9fea3;

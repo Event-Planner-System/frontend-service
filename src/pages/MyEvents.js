@@ -50,17 +50,15 @@ const MyEvents = () => {
       welcome="My Events"
       info="Events you have organized"
     >
-      {error && <div className="error-message">{error}</div>}
-
       <div className="events-section">
         <h2 className="section-title">Your Organized Events</h2>
-        
+
         {events.length === 0 ? (
-          <div className="no-events">
-            <div className="no-events-icon">📅</div>
-            <h3>No events yet</h3>
-            <p>Start by creating your first event</p>
-          </div>
+          error ? (
+            <div className="error-message">{error}</div>
+          ) : (
+            <p>No events found</p>
+          )
         ) : (
           <div className="cards-container">
             {events.map((event) => (
@@ -72,6 +70,7 @@ const MyEvents = () => {
             ))}
           </div>
         )}
+
       </div>
     </DashboardLayout>
   );

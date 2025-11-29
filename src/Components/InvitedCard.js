@@ -1,6 +1,7 @@
 import "../styles/Card.css"; // 👈 Use same style as the normal Card
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../styles/Invited.css";
 
 export default function InvitedCard({ event, role, status, onCardClick }) {
   const navigate = useNavigate();
@@ -20,21 +21,27 @@ export default function InvitedCard({ event, role, status, onCardClick }) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-
-      navigate("/my-events");
+      if (accept === "true") {
+        navigate("/my-events");
+      } else {
+        navigate("/invited");
+      }
     } catch (error) {
       console.error("Error accepting invitation:", error);
     }
   };
 
   return (
-    <div className="invited-card">
       <div className="card" onClick={onCardClick} style={{ cursor: "pointer" }}>
         
         {/* ---- SAME header as Card ---- */}
         <div className="card-header">
           <h4 className="card-title">{event.title}</h4>
-          <span className="card-role">{userRole}</span>
+        {userRole === "Organizer" ? (
+          <span className="card-role-organizer">Organizer</span>
+        ) : (
+          <span className="card-role-attendee">Attendee</span>
+        )}
         </div>
 
         {/* ---- SAME description ---- */}
@@ -62,7 +69,7 @@ export default function InvitedCard({ event, role, status, onCardClick }) {
 
         {/* ---- SAME attendees text ---- */}
         <p className="card-attendees">{event.participants.length} attendees</p>
-      </div>
+      
 
       {/* ---- Accept / Decline buttons ------- */}
       {isOrganizerPending && (

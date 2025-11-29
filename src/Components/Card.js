@@ -1,7 +1,7 @@
 export default function Card({ event, onCardClick }) {
   const attendeeCount = event.participants?.length || 0;
 
-  
+
   const currentUserId = event.currentUserId;
 
 
@@ -13,10 +13,14 @@ export default function Card({ event, onCardClick }) {
 
   return (
     <div className="card" onClick={onCardClick} style={{ cursor: "pointer" }}>
-      
+
       <div className="card-header">
         <h4 className="card-title">{event.title}</h4>
-        <span className="card-role">{userRole}</span>
+        {userRole === "Organizer" ? (
+          <span className="card-role-organizer">Organizer</span>
+        ) : (
+          <span className="card-role-attendee">Attendee</span>
+        )}
       </div>
 
       <p className="task-description">{event.description || "No description"}</p>

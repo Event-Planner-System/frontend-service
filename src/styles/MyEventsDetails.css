@@ -237,6 +237,10 @@ border: none;
 background: #f0f2ff;
 font-size: 14px;
 }
+.email-input:focus {
+outline: none; 
+border: 2px solid #7b53ba;
+}
 
 
 .role-buttons {

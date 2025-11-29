@@ -20,7 +20,6 @@ export default function Dashboard() {
         try {
             const token = localStorage.getItem("access_token");
             const user = await getUser();
-            // ✅ FIXED: Changed backtick to parentheses
             const res = await axios.get(`http://localhost:8000/events/getAllMyEvents/${user._id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });

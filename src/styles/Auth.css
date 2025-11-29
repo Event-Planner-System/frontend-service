@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #631ca4 0%, #835da9 100%);
   padding: 20px;
 }
 
@@ -52,7 +52,7 @@
 .btn-primary2 {
   width: 100%;
   padding: 12px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #9d4de7 0%, #764ba2 100%);
   color: white;
   border: none;
   border-radius: 5px;
@@ -82,7 +82,7 @@
 }
 
 .auth-link a {
-  color: #667eea;
+  color: #5347b9;
   text-decoration: none;
   font-weight: 600;
 }

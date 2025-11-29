@@ -10,6 +10,7 @@ export default function Invited() {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const { getUserByEmail } = useContext(AuthContext);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         fetchInvitedEvents();
@@ -43,6 +44,7 @@ export default function Invited() {
             setEvents(eventsWithUserId);
         } catch (err) {
             console.error('Error fetching invited events:', err);
+            setError('Failed to load events');
         } finally {
             setLoading(false);
         }
@@ -58,36 +60,37 @@ export default function Invited() {
                 <h2 className="section-title">Your Invited Events</h2>
 
                 {loading ? (
-                    <p>Loading...</p>
-                ) : events.length === 0 ? (
-                    <div className="no-events">
-                        <div className="no-events-icon">🎉</div>
-                        <h3>No event invitations</h3>
-                        <p>You haven't been invited to any events yet</p>
-                    </div>
-                ) : (
-                    <div className="events-grid">
-                        {events.map((event) => {
-                            const me = event.participants.find(
-                                (p) => p.user_id === event.currentUserId
-                            );
-                            const role = me?.role || 'attendee';
-                            const status = me?.attendance_status || 'Pending';
+    <p>Loading...</p>
+) : events.length === 0 ? (
+    error ? (
+        <div className="error-message">{error}</div>
+    ) : (
+        <div className="no-events">You haven't been invited to any events yet</div>
+    )
+) : (
+    <div className="cards-container">
+        {events.map((event) => {
+            const me = event.participants.find(
+                (p) => p.user_id === event.currentUserId
+            );
+            const role = me?.role || 'attendee';
+            const status = me?.attendance_status || 'Pending';
 
-                            return (
-                                <InvitedCard
-                                    key={event.id}
-                                    event={event}
-                                    role={role}
-                                    status={status}
-                                    onCardClick={() =>
-                                        navigate(`/invited-events-details/${event.id}`)
-                                    }
-                                />
-                            );
-                        })}
-                    </div>
-                )}
+            return (
+                <InvitedCard
+                    key={event.id}
+                    event={event}
+                    role={role}
+                    status={status}
+                    onCardClick={() =>
+                        navigate(`/invited-events-details/${event.id}`)
+                    }
+                />
+            );
+        })}
+    </div>
+)}
+
             </div>
         </DashboardLayout>
     );

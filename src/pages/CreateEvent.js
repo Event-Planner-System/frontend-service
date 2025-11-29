@@ -54,7 +54,7 @@ const CreateEvent = () => {
       // Redirect to my events after 2 seconds
       setTimeout(() => {
         navigate('/my-events');
-      }, 2000);
+      }, 1000);
     } else {
       setError(result.message);
     }

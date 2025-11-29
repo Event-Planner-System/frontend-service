@@ -1,0 +1,88 @@
+/* Action buttons container */
+.card-actions-inline {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* Accept button */
+.accept-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.accept-btn::before {
+  content: '✓';
+  margin-right: 6px;
+  font-weight: bold;
+}
+
+.accept-btn:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.accept-btn:active {
+  transform: translateY(0);
+}
+
+/* Decline button */
+.decline-btn {
+  flex: 1;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.decline-btn::before {
+  content: '✕';
+  margin-right: 6px;
+  font-weight: bold;
+}
+
+.decline-btn:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
+}
+
+.decline-btn:active {
+  transform: translateY(0);
+}
+
+.accept-btn,
+.decline-btn {
+  width: 100%;
+  padding: 12px 0;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  
+  .accept-btn,
+  .decline-btn {
+    width: 100%;
+  }
+}

@@ -2,14 +2,11 @@ apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
   name: frontend
-  labels:
-    app: frontend
 spec:
   to:
     kind: Service
     name: frontend
   port:
-    targetPort: 8080-tcp
+    targetPort: 80
   tls:
     termination: edge
-    insecureEdgeTerminationPolicy: Redirect

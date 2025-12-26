@@ -1,0 +1,307 @@
+#my-events-details {
+  display: flex;
+  flex-direction: column;
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  gap: 20px;
+}
+
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 500px 380px;
+  gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  margin-bottom: 25px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: start;
+}
+
+
+.card2 {
+  background: #fff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.card2:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
+}
+
+/* Event Card */
+.event-card2 {
+  padding: 35px 40px;
+}
+
+.name {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000;
+  margin: 0 0 8px 0;
+  text-align: left;
+}
+.nameAnddeleteBtn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-delete {
+  
+  background: #f92436;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-delete:hover {
+  background: #ee5a6f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 71, 87, 0.3);
+}
+
+.subtitle {
+  color: #9ca3af;
+  font-size: 15px;
+  margin: 0 0 35px 0;
+  text-align: left;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 60px;
+}
+
+.info-item2 {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 13px;
+  color: #5b21b6;
+  margin: 0;
+  font-weight: 500;
+}
+
+.value {
+  font-weight: 600;
+  color: #000;
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Summary Card */
+.summary-card {
+  padding: 30px;
+}
+
+.summary-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  color: #000;
+}
+
+.summary-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 15px;
+  width: 100%;
+}
+
+.summary-box:last-child {
+  margin-bottom: 0;
+}
+
+.summary-box.going {
+  background: #f2effc;
+  color: #5b21b6;
+}
+
+.summary-box.maybe {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+.summary-box.not-going {
+  background: #fee2e2;
+  color: #dc2626;
+}
+.summary-box.pending{
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.summary-box span:last-child {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.attendees-card {
+  width: 100%;          /* responsive width */
+  max-width: 800px;    /* max size on large screens */
+  margin: -60px auto 25px auto;
+  padding: 30px 40px;  /* smaller padding improves mobile layout */
+  box-sizing: border-box;
+  height: auto;
+
+}
+.attendees-rows{
+  overflow-y: auto;
+  max-height: 200px;
+}
+
+
+.attendees-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  color: #000;
+}
+
+.attendee-row {
+  display: grid;
+  justify-content: space-between;
+  align-items: center;
+  background: #f1f2f27b;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  grid-template-columns: 1fr auto;
+  margin-bottom: 2px;
+}
+
+.status {
+  padding: 6px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 14px;
+  width: auto;
+}
+
+.going-status {
+  background: #ddd6fe;
+  color: #5b21b6;
+}
+
+.maybe-status {
+  background: #ddd6feae;
+  color: #7d4ad0;
+}
+.not-going-status {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.pending-status {
+  background: #d1d5db;
+  color: #374151;
+}
+
+.invite-card {
+
+padding: 20px;
+background: white;
+border-radius: 16px;
+box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+display: flex;
+flex-direction: column;
+gap: 16px;
+text-align: center;
+}
+
+
+.email-input {
+padding: 12px;
+border-radius: 10px;
+border: none;
+background: #f0f2ff;
+font-size: 14px;
+}
+.email-input:focus {
+outline: none; 
+border: 2px solid #7b53ba;
+}
+
+
+.role-buttons {
+display: flex;
+justify-content: space-between;
+}
+
+
+.role-buttons button {
+flex: 1;
+padding: 10px 0;
+border-radius: 10px;
+border: none;
+background: #e6e1ff;
+margin: 0 4px;
+cursor: pointer;
+transition: 0.2s;
+}
+
+
+.role-buttons .active {
+background: #7b53ba;
+color: white;
+}
+
+
+.send-btn {
+padding: 12px;
+background: #7b53ba;
+color: white;
+border: none;
+border-radius: 10px;
+font-size: 15px;
+cursor: pointer;
+transition: 0.2s;
+}
+
+
+.send-btn:hover {
+opacity: 0.9;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+    padding: 0 40px;
+  }
+  
+  .summary-card {
+    max-width: 100%;
+  }
+  
+  .attendance-card,
+  .attendees-card {
+    padding: 30px 40px;
+  }
+  
+  .back-btn {
+    margin-left: 30px;
+  }
+}

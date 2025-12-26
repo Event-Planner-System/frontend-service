@@ -110,6 +110,19 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+ const getUserByEmail = async (email) =>{
+    try {
+      const token = localStorage.getItem('access_token');
+      const res = await axios.get(`${API_URL}/user/${email}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      return res.data;
+    } catch (error) {
+      console.error('Error fetching user by email:', error);
+      return null;
+    }
+  };
+
   const logout = () => {
     localStorage.removeItem('access_token');
     localStorage.removeItem('user');
@@ -128,7 +141,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, register, login, logout, checkBackendConnection }}>
+    <AuthContext.Provider value={{ user, loading, register, login, logout, getUserByEmail, checkBackendConnection }}>
       {children}
     </AuthContext.Provider>
   );

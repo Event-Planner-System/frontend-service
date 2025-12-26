@@ -28,13 +28,21 @@
   color: #000000;
 }
 
-.card-role {
+.card-role-organizer {
   background-color: #e8dcff;
-  color: #6b38ff;
+  color: #6237a7;
   padding: 4px 12px;
   border-radius: 12px;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 520;
+}
+.card-role-attendee {
+  background-color: #d1eafa;
+  color: #1309a0;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 520;
 }
 
 .task-description {

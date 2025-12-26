@@ -54,14 +54,14 @@ const CreateEvent = () => {
       // Redirect to my events after 2 seconds
       setTimeout(() => {
         navigate('/my-events');
-      }, 2000);
+      }, 1000);
     } else {
       setError(result.message);
     }
   };
 
   return (
-    <div>
+    <div id="create-event-page">
       <Navbar />
       <div className="create-event-container">
         <div className="create-event-card">

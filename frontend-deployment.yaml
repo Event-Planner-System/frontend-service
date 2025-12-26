@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: afnansayed17/frontend6:latest
+          image: afnansayed17/frontend7:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80

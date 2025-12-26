@@ -1,3 +1,12 @@
+FROM node:18-alpine AS build
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build
 FROM nginx:alpine
 
 # Copy React build
@@ -6,7 +15,7 @@ COPY --from=build /app/build /usr/share/nginx/html
 # Copy nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Change ownership so non-root user in OpenShift can write
+# Change ownership so non-root OpenShift user can write
 RUN chown -R nginx:nginx /usr/share/nginx/html
 
 # Runtime env replacement script

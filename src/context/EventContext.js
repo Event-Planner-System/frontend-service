@@ -3,8 +3,8 @@ import axios from "axios";
 
 export const EventContext = createContext();
 
-const API_URL = "http://localhost:8000/events";
-const TEST_API_URL = "http://localhost:8000/test-connection";
+const API_URL = `${process.env.REACT_APP_BACKEND_URL}/events`;
+const TEST_API_URL = `${process.env.REACT_APP_BACKEND_URL}/test-connection`;
 
 export const EventProvider = ({ children }) => {
   const [user, setUser] = useState(null);

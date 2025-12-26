@@ -4,8 +4,8 @@ import { AuthContext } from "./AuthContext";
 
 export const InvitationsContext = createContext();
 
-const API_URL = "http://localhost:8000/invitations";
-const TEST_API_URL = "http://localhost:8000/test-connection";
+const API_URL = `${process.env.REACT_APP_BACKEND_URL}/invitations`;
+const TEST_API_URL = `${process.env.REACT_APP_BACKEND_URL}/test-connection`;
 
 export const InvitationsProvider = ({ children }) => {
   const [user, setUser] = useState(null);

@@ -5,6 +5,9 @@ metadata:
 spec:
   to:
     kind: Service
-    name: frontend-svc     
+    name: frontend-service  # Changed from frontend-svc to match oc new-app name
   port:
-    targetPort: 80
+    targetPort: 8080  # Changed from 80 to 8080
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

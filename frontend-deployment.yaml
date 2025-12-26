@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: afnansayed17/frontend:latest
+          image: afnansayed17/frontend2:latest
           ports:
             - containerPort: 3000
           env:

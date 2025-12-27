@@ -30,7 +30,7 @@ export default function Invited() {
             const currentUser = await getUserByEmail(savedUser.email);
             
             const res = await axios.get(
-                'http://localhost:8000/events/invited-events',
+                `${window._env_.REACT_APP_BACKEND_URL}/events/invited-events`,
                 { headers: { Authorization: `Bearer ${token}` } }
             );
 

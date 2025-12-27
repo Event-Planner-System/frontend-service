@@ -15,7 +15,7 @@ export default function InvitedCard({ event, role, status, onCardClick }) {
     try {
       const token = localStorage.getItem("access_token");
       await axios.post(
-        `http://localhost:8000/invitations/${event.id}/accept-invitation-organizer/${event.currentUserId}?accept=${accept}`,
+        `${window._env_.REACT_APP_BACKEND_URL}/invitations/${event.id}/accept-invitation-organizer/${event.currentUserId}?accept=${accept}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },

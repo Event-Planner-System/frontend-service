@@ -7,6 +7,4 @@ spec:
     kind: Service
     name: frontend
   port:
-    targetPort: http
-  tls:
-    termination: edge
+    targetPort: 8080

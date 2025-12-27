@@ -32,7 +32,7 @@ export default function EventDetails() {
     const fetchMyEvent = async () => {
         try {
             const token = localStorage.getItem('access_token');
-            const res = await axios.get(`${window._env_.REACT_APP_BACKEND_URL}/events/${id}`, {
+            const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/events/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setEvent(res.data);

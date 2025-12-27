@@ -2,10 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  labels:
-    app: frontend
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -16,18 +14,10 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: afnansayed17/frontend7:latest
+          image: afnansayed17/frontend:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 80
-              protocol: TCP
+            - containerPort: 8080
           env:
             - name: REACT_APP_BACKEND_URL
               value: "https://backend-event-planner-dev.apps.rm3.7wse.p1.openshiftapps.com"
-          resources:
-            requests:
-              memory: "256Mi"
-              cpu: "250m"
-            limits:
-              memory: "512Mi"
-              cpu: "500m"

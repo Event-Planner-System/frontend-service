@@ -3,8 +3,13 @@ import axios from 'axios';
 
 export const AuthContext = createContext();
 
-const API_URL = `${process.env.REACT_APP_BACKEND_URL || "REACT_APP_BACKEND_URL_PLACEHOLDER"}/auth`;
-const TEST_API_URL = `${process.env.REACT_APP_BACKEND_URL || "REACT_APP_BACKEND_URL_PLACEHOLDER"}/test-connection`;
+const API_URL = `${
+  process.env.REACT_APP_BACKEND_URL || "REACT_APP_BACKEND_URL_PLACEHOLDER"
+}/auth`;
+
+const TEST_API_URL = `${
+  process.env.REACT_APP_BACKEND_URL || "REACT_APP_BACKEND_URL_PLACEHOLDER"
+}/test-connection`;
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);

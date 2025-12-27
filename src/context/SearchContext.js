@@ -3,7 +3,9 @@ import axios from "axios";
 
 export const SearchContext = createContext();
 
-const API_URL = `${process.env.REACT_APP_BACKEND_URL || "REACT_APP_BACKEND_URL_PLACEHOLDER"}/events`;
+const API_URL = `${
+  process.env.REACT_APP_BACKEND_URL || "REACT_APP_BACKEND_URL_PLACEHOLDER"
+}/events`;
 
 export const SearchProvider = ({ children }) => {
   const [searchResults, setSearchResults] = useState([]);

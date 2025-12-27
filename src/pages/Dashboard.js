@@ -23,7 +23,8 @@ export default function Dashboard() {
             const res = await axios.get(`${window._env_.REACT_APP_BACKEND_URL}/events/getAllMyEvents/${user._id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            setEvents(res.data);
+            const safeEvents = Array.isArray(res.data) ? res.data : [];
+            setEvents(safeEvents);
         } catch (err) {
             console.error("Error loading dashboard events:", err);
         } finally {

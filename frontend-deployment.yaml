@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: afnansayed17/frontend:v7
+          image: afnansayed17/frontend:v12
           ports:
             - containerPort: 8080
           env:

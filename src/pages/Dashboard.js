@@ -20,7 +20,7 @@ export default function Dashboard() {
         try {
             const token = localStorage.getItem("access_token");
             const user = await getUser();
-            const res = await axios.get(`http://localhost:8000/events/getAllMyEvents/${user._id}`, {
+            const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/events/getAllMyEvents/${user._id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setEvents(res.data);

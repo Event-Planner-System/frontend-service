@@ -53,7 +53,7 @@ export default function EventDetails() {
                 }
             }
 
-            const res = await axios.get(`http://localhost:8000/events/${id}`, {
+            const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/events/${id}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setEvent(res.data);

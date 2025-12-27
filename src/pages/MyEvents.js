@@ -20,7 +20,7 @@ const MyEvents = () => {
   const fetchMyEvents = async () => {
     try {
       const token = localStorage.getItem('access_token');
-      const res = await axios.get('http://localhost:8000/events/my-organizer-events', {
+      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/events/my-organizer-events`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
